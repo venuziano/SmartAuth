@@ -1,0 +1,7 @@
+1. primeiro passo instalar,
+2. compilar o smart contract,comando:
+asdasd
+solc --combined-json=abissaaas,bin,metadata --output-dir . {nome do arquivo}.sol
+
+3. dps rodar o deploy.jsssss
+ssxxssssssss12sss22ssxssssssssssxsasssaasxzssnsssssssssuashduashduaaaaenviando mais coisasssaaaaaaaaaaaaasssaaa
