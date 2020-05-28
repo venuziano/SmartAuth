@@ -7,7 +7,9 @@ export default function RegisterTransaction() {
   const [fromAddress, setFromAddress] = useState('');
   const [contractAddress, setConctractAddress] = useState('');
   const [document, setDocument] = useState('');
-
+  const [tx, setTx] = useState('');
+  const [receipt, setReceipt] = useState('');
+  
   async function handleRegister() {
 
     const data = {
@@ -19,7 +21,8 @@ export default function RegisterTransaction() {
     try {
       const response = await api.post('/', data)
 
-      console.log(response);
+      setTx(response.data);
+      setReceipt('https://rinkeby.etherscan.io/tx/' + response.data);
     } catch (err) {
       alert(`Erro no registro, tente novamente.`);
     }
@@ -28,6 +31,9 @@ export default function RegisterTransaction() {
   async function onFileUpload(e) { 
     const formData = new FormData(); 
     
+    setFromAddress('0x181857a9eafdf6412ba38e74e9cabf13d8d8dbdc');
+    setConctractAddress('0x2A673bf09b8B4685C094c9e047CEBC7797ec93dc');
+
     formData.append( 
       "myFile",
       document
@@ -36,7 +42,8 @@ export default function RegisterTransaction() {
     try {
       const response = await api.post('/uploadFile', formData); 
 
-      console.log(`response: ' ${JSON.stringify(response.data)}`);
+      setHash(JSON.stringify(response.data.hash.replace('"', "")));
+      console.log(`response:' ${JSON.stringify(response.data.hash.replace("", ""))}`);
     } catch (err) {
       console.log('error:' + err)
       alert(`Erro no registro, tente novamente.`);
@@ -73,6 +80,14 @@ export default function RegisterTransaction() {
         />
 
         <button type="submit" onClick={handleRegister}>Registrar</button>
+      </div>
+
+      <div>
+        <label>Comprovante do registro:</label>
+        <input 
+          defaultValue={tx}
+        />
+        <p>Consulte seu comprovante : <a href={receipt}>aqui.</a></p>
       </div>
     </div>
   );

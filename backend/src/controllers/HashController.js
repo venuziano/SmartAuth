@@ -12,7 +12,8 @@ module.exports = {
         var finalHash = cryptoJs.SHA256(data);
         //upToIPFS(data);
         console.log('hash: ' + finalHash)
-        return response.json({ finalHash });
+        var hash = finalHash.toString();
+        return response.send({ hash });
     }})
   }
 }

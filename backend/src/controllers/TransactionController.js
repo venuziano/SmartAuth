@@ -20,13 +20,13 @@ module.exports = {
   await canManipuleContract.methods.setDocumentHash('#_' + request.body.hash)
     .send({
       from: fromAddress,
-      gas: 200000,
+      gas: 400000,
       gasPrice: 21000000000
     })
     .then(function (txRaw) {
       console.log(txRaw)
       console.log('\n' + '\u001b[0;32m Registro realizado com sucesso!\u001b[0m')
-      return response.json(txRaw)
+      return response.json(txRaw.transactionHash);
     })
     .catch(function(error) {
       console.log("Error: \n" + error);
