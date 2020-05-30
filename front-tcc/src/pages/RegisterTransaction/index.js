@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './styles.css'
+import logoImg from '../../assets/logo.png';
 import api from '../../services/api'
 
 export default function RegisterTransaction() {
@@ -9,6 +11,7 @@ export default function RegisterTransaction() {
   const [document, setDocument] = useState('');
   const [tx, setTx] = useState('');
   const [receipt, setReceipt] = useState('');
+  const [showReceipt, setShowReceipt] = useState(false);
   
   async function handleRegister() {
 
@@ -46,48 +49,65 @@ export default function RegisterTransaction() {
       console.log(`response:' ${JSON.stringify(response.data.hash.replace("", ""))}`);
     } catch (err) {
       console.log('error:' + err)
-      alert(`Erro no registro, tente novamente.`);
+      alert(`Erro no upload, tente novamente.`);
     }
   };
-    
+  
+  function showReceiptDiv() {
+    setShowReceipt(true);
+  }
+
+  const Results = () => (
+    <div id="receipt">
+      <label>Comprovante do registro:</label>
+      <input 
+        defaultValue={tx}
+      />
+      <p>Consulte seu comprovante : <a href={receipt}>aqui.</a></p>
+    </div>
+  )
+
   return (
-    <div className="main-cotainer">
-      <div>
-        
-        <label>Arquivo: </label>
-        <input
-          name="file"
-          type="file"
-          onChange={e => setDocument(e.target.files[0])}
-        />
-        <button type="submit" onClick={onFileUpload}>Upload</button>
-      </div>
+    <div className="register-container">
+      <div className="content">
 
-      <div>  
-        <label htmlFor="hash">Hash: </label>
-        <input 
-          defaultValue={hash}
-        />
-        <input 
-          placeholder="sua chave pública"
-          value={fromAddress}
-          onChange={e => setFromAddress(e.target.value)}
-        />
-        <input 
-          placeholder="endereço contrato"
-          value={contractAddress}
-          onChange={e => setConctractAddress(e.target.value)}
-        />
+        <section>
+          <img src={logoImg} alt="Be The Hero" />
 
-        <button type="submit" onClick={handleRegister}>Registrar</button>
-      </div>
+          <h1>Smart Auth</h1>
+          <p>Faça o upload de um documento para autenticá-lo na rede de testes Rinkeby da Ethereum.</p>
 
-      <div>
-        <label>Comprovante do registro:</label>
-        <input 
-          defaultValue={tx}
-        />
-        <p>Consulte seu comprovante : <a href={receipt}>aqui.</a></p>
+        </section>
+
+        <div className="form">
+          <label>Documento: </label>
+          <input className="upload-button"
+            name="file"
+            type="file"
+            onChange={e => setDocument(e.target.files[0])}
+          />
+
+          <button className="button" type="submit" onClick={onFileUpload}>Upload</button> 
+      
+          <label htmlFor="hash">Hash do documento: </label>
+          <input 
+            defaultValue={hash}
+          />
+          <input 
+            placeholder="sua chave pública"
+            value={fromAddress}
+            onChange={e => setFromAddress(e.target.value)}
+          />
+          <input 
+            placeholder="endereço contrato"
+            value={contractAddress}
+            onChange={e => setConctractAddress(e.target.value)}
+          />
+
+          <button className="button" type="submit" onClick={() => { handleRegister(); showReceiptDiv() }}>Registrar</button>
+          
+          {showReceipt ? <Results /> : null}
+        </div>
       </div>
     </div>
   );
