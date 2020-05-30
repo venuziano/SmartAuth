@@ -14,7 +14,7 @@ module.exports = {
   console.log('contractAddress:' + contractAddress);
 
   //desbloquear a conta
-  unlockAccount.unlockAccount(fromAddress, '123')
+  await unlockAccount.unlockAccount(fromAddress, '123')
   console.log('Realizando registro na blockchain...\n')
   //criar registro na blockchain através da chamada do método do smart contract
   await canManipuleContract.methods.setDocumentHash('#_' + request.body.hash)

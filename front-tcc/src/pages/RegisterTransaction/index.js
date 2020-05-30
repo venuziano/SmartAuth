@@ -8,7 +8,7 @@ export default function RegisterTransaction() {
   const [hash, setHash] = useState('');
   const [fromAddress, setFromAddress] = useState('');
   const [contractAddress, setConctractAddress] = useState('');
-  const [document, setDocument] = useState('');
+  const [document, setDocument] = useState();
   const [tx, setTx] = useState('');
   const [receipt, setReceipt] = useState('');
   const [showReceipt, setShowReceipt] = useState(false);
@@ -32,10 +32,7 @@ export default function RegisterTransaction() {
   }
 
   async function onFileUpload(e) { 
-    const formData = new FormData(); 
-    
-    setFromAddress('0x181857a9eafdf6412ba38e74e9cabf13d8d8dbdc');
-    setConctractAddress('0x2A673bf09b8B4685C094c9e047CEBC7797ec93dc');
+    const formData = new FormData();
 
     formData.append( 
       "myFile",
@@ -43,13 +40,16 @@ export default function RegisterTransaction() {
     );
 
     try {
+      setFromAddress('0x181857a9eafdf6412ba38e74e9cabf13d8d8dbdc');
+      setConctractAddress('0x2A673bf09b8B4685C094c9e047CEBC7797ec93dc');
+      
       const response = await api.post('/uploadFile', formData); 
 
       setHash(JSON.stringify(response.data.hash.replace('"', "")));
       console.log(`response:' ${JSON.stringify(response.data.hash.replace("", ""))}`);
     } catch (err) {
       console.log('error:' + err)
-      alert(`Erro no upload, tente novamente.`);
+      alert('Erro no upload, tente novamente.');
     }
   };
   
