@@ -13,7 +13,7 @@ body {
   background-image: url(./assets/background.gif);
 }
 
-input, button, textarea, label, p {
+input, button, textarea, label, p, span {
   font: 400 18px Roboto, sans-serif;
 }
 
@@ -60,7 +60,7 @@ form textarea {
 }
 
 .button:hover {
-    filter: brightness(90%);
+  filter: brightness(40%);
 }
 
 .back-link {

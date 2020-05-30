@@ -51,32 +51,33 @@
 }
 
 .register-container .content .form .upload-button {
-  background-color: #3498db;
-  border-radius: 5px;
-  color: #fff;
-  margin: 10px;
-  padding: 6px 20px
+  padding: 10px;
+  height: 60px;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: 18px;
+  transition: filter 0.2s;
+  font-size: 18px;
+  background-color: #009578;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .register-container .content .form .upload-button:hover {
-  background-color: #2980b9;
+  filter: brightness(85%);
 }
 
-#hide input[type=file] {
-  display:none;
-  margin:10px;
-  }
-  #hide input[type=file] + label {
-  display:inline-block;
-  margin:20px;
-  padding: 4px 32px;
-  background-color: #FFFFFF;
-  border:solid 1px #666F77;
-  border-radius: 6px;
-  color:#666F77;
-  }
-  #hide input[type=file]:active + label {
-  background-image: none;
-  background-color:#2D6C7A;
-  color:#FFFFFF;
-  }
+.register-container .content .form .custom-text {
+  margin-left: 10px;
+  color: #aaa;
+}
+.load {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 30%;
+  left: 45%;
+  color: blue;
+}
