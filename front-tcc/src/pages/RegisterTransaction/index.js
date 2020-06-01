@@ -15,6 +15,7 @@ export default function RegisterTransaction() {
   const [showReceiptWorked, setShowReceiptWorked] = useState(false);
   const [showReceiptFailed, setShowReceiptFailed] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
+  const [disableBtnRegister, setDisableBtnRegister] = useState({ disabled: 'true', title: 'Realize o upload de um documento para registrar.'});
 
   const realFile = React.createRef();
   const customText = React.createRef();
@@ -63,6 +64,7 @@ export default function RegisterTransaction() {
       const response = await api.post('/uploadFile', formData); 
 
       setHash(JSON.stringify(response.data.hash));
+      setDisableBtnRegister({ disabled: "", title: "" });
       console.log(`response:' ${JSON.stringify(response.data.hash)}`);
     } catch (err) {
       console.log('error:' + err)
@@ -147,7 +149,7 @@ export default function RegisterTransaction() {
             onChange={e => setConctractAddress(e.target.value)}
           />
 
-          <button className="button" type="submit" onClick={handleRegister}>Registrar</button>
+          <button className="button" type="submit" title={disableBtnRegister.title} disabled={disableBtnRegister.disabled} onClick={handleRegister}>Registrar</button>
 
           {showLoading ? <Loading /> : null || showReceiptWorked ? <ShowResultsWorked /> : null || showReceiptFailed ? <ShowResultsFailed /> : null}
         </div>
