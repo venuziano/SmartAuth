@@ -16,6 +16,7 @@ export default function RegisterTransaction() {
   const [showReceiptFailed, setShowReceiptFailed] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
   const [disableBtnRegister, setDisableBtnRegister] = useState({ disabled: 'true', title: 'Realize o upload de um documento para registrar.'});
+  const [disableBtnUpload, setDisableBtnUpload] = useState({ disabled: 'true', title: 'Selecione um documento.'});
 
   const realFile = React.createRef();
   const customText = React.createRef();
@@ -91,7 +92,7 @@ export default function RegisterTransaction() {
   const Loading = () => (
     <div id="loading">
       <p className="textAlign"> <img alt="caregando" src={loadImg} className="load"></img>
-      Realizando registro, aguarde alguns segundos...<br />
+      Realizando o registro, aguarde alguns segundos...<br />
       </p>
     </div>
   )
@@ -102,6 +103,7 @@ export default function RegisterTransaction() {
 
   function validatePath() {
     if(realFile.current.value) {
+      setDisableBtnUpload({ disabled: "", title: "" });
       //customText.current.innerHTML = realFile.current.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
       customText.current.innerHTML = realFile.current.value;
     }else {
@@ -132,7 +134,7 @@ export default function RegisterTransaction() {
           <button type="button"  className="upload-button" onClick={focusTextInput}>Selecione um documento: </button>
           <span ref={customText} className="custom-text">Nenhum documento selecionado.</span>
 
-          <button className="button" type="submit" onClick={onFileUpload}>Upload</button> 
+          <button title={disableBtnUpload.title} disabled={disableBtnUpload.disabled} className="button" type="submit" onClick={onFileUpload}>Upload</button> 
       
           <label htmlFor="hash">Hash do documento: </label>
           <input 
