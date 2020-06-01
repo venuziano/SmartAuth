@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './styles.css'
 import logoImg from '../../assets/logo.png';
-import loadImg from '../../assets/loading.gif'
+import loadImg from '../../assets/loading2.gif'
 import api from '../../services/api'
 
 export default function RegisterTransaction() {
@@ -12,10 +12,12 @@ export default function RegisterTransaction() {
   const [document, setDocument] = useState();
   const [tx, setTx] = useState('');
   const [receipt, setReceipt] = useState('');
-  const [showReceipt, setShowReceipt] = useState(false);
+  const [showReceiptWorked, setShowReceiptWorked] = useState(false);
+  const [showReceiptFailed, setShowReceiptFailed] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
+
   const realFile = React.createRef();
   const customText = React.createRef();
-
   
   async function handleRegister() {
 
@@ -25,10 +27,21 @@ export default function RegisterTransaction() {
       hash,
     };
 
+    setShowLoading(true);
+
     try {
       const response = await api.post('/', data)
 
       setTx(response.data);
+      
+      if(response.data === 'error'){
+        setShowLoading(false);
+        setShowReceiptFailed(true);
+      }else {
+        setShowLoading(false);
+        setShowReceiptWorked(true);
+      }
+
       setReceipt('https://rinkeby.etherscan.io/tx/' + response.data);
     } catch (err) {
       alert(`Erro no registro, tente novamente.`);
@@ -49,44 +62,46 @@ export default function RegisterTransaction() {
       
       const response = await api.post('/uploadFile', formData); 
 
-      setHash(JSON.stringify(response.data.hash.replace('"', "")));
-      console.log(`response:' ${JSON.stringify(response.data.hash.replace("", ""))}`);
+      setHash(JSON.stringify(response.data.hash));
+      console.log(`response:' ${JSON.stringify(response.data.hash)}`);
     } catch (err) {
       console.log('error:' + err)
       alert('Erro no upload, tente novamente.');
     }
   };
   
-  function showReceiptDiv() {
-    setShowReceipt(true);
-  }
+  const ShowResultsFailed = () => (
+    <div>
+      <label>Erro no registro, tente novamente.</label>
+    </div>
+  )
 
-  const ShowResults = () => (
-    <div id="receipt">
+  const ShowResultsWorked = () => (
+    <div>
       <label>Comprovante do registro:</label>
       <input 
         defaultValue={tx}
       />
-      <p>Consulte seu comprovante : <a href={receipt}>aqui.</a></p>
+      <p>Consulte seu comprovante <a href={receipt}>aqui.</a></p>
     </div>
   )
 
-  function showLoading() {
-    const Loading = () => (
-      <div id="loading" className="load">
-        <img alt="caregando" src={loadImg}></img>
-        <span>Registrando...</span>
-      </div>
-    )
-  }
+  const Loading = () => (
+    <div id="loading">
+      <p className="textAlign"> <img alt="caregando" src={loadImg} className="load"></img>
+      Realizando registro, aguarde alguns segundos...<br />
+      </p>
+    </div>
+  )
 
   function focusTextInput() {
     realFile.current.click();
   }
 
-  function validatePatch() {
+  function validatePath() {
     if(realFile.current.value) {
-      customText.current.innerHTML = realFile.current.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+      //customText.current.innerHTML = realFile.current.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+      customText.current.innerHTML = realFile.current.value;
     }else {
       customText.current.innerHTML = "Nenhum documento selecionado."
     }
@@ -110,7 +125,7 @@ export default function RegisterTransaction() {
             name="file"
             type="file"
             ref={realFile}
-            onChange={e => { setDocument(e.target.files[0]); validatePatch() }}
+            onChange={e => { setDocument(e.target.files[0]); validatePath() }}
           />
           <button type="button"  className="upload-button" onClick={focusTextInput}>Selecione um documento: </button>
           <span ref={customText} className="custom-text">Nenhum documento selecionado.</span>
@@ -132,9 +147,9 @@ export default function RegisterTransaction() {
             onChange={e => setConctractAddress(e.target.value)}
           />
 
-          <button className="button" type="submit" onClick={() => { handleRegister(); showReceiptDiv() }}>Registrar</button>
+          <button className="button" type="submit" onClick={handleRegister}>Registrar</button>
 
-          {showReceipt ? <ShowResults /> : null}
+          {showLoading ? <Loading /> : null || showReceiptWorked ? <ShowResultsWorked /> : null || showReceiptFailed ? <ShowResultsFailed /> : null}
         </div>
       </div>
     </div>

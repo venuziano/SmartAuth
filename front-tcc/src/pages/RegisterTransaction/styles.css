@@ -73,11 +73,14 @@
   margin-left: 10px;
   color: #aaa;
 }
-.load {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  top: 30%;
-  left: 45%;
-  color: blue;
+
+.register-container .content .form .textAlign {
+  text-align: center;
 }
+
+.register-container .content .form .load {
+  float: left;
+  color: #0a0a0a;
+  text-align: center;
+}
+

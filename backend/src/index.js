@@ -3,6 +3,7 @@ import cors from 'cors'
 import express from 'express'
 import routes from './routes'
 import fileUpload from 'express-fileupload'
+import shell from 'shelljs';
 
 const app = express()
 
@@ -17,3 +18,6 @@ app.use(fileUpload({
 app.use(routes);
 app.disable('x-powered-by');
 app.listen(3333);
+
+//abrir conexão com a rede da blockchain
+//shell.exec('geth --allow-insecure-unlock --rinkeby --rpc --rpcapi="admin,eth,net,web3,personal, txpool" --syncmode=light');

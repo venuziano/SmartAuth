@@ -1,6 +1,4 @@
 import { createContract } from '../ethereum/hashContract'
-// import { web3 } from '../ethereum/web3.js'
-// import * as createHash from './createHash'
 import * as unlockAccount from '../components/wallet'
 
 module.exports = {
@@ -16,6 +14,7 @@ module.exports = {
   //desbloquear a conta
   await unlockAccount.unlockAccount(fromAddress, '123')
   console.log('Realizando registro na blockchain...\n')
+  
   //criar registro na blockchain através da chamada do método do smart contract
   await canManipuleContract.methods.setDocumentHash('#_' + request.body.hash)
     .send({
@@ -23,14 +22,14 @@ module.exports = {
       gas: 400000,
       gasPrice: 21000000000
     })
-    .then(function (txRaw) {
+    .then(function(txRaw) {
       console.log(txRaw)
       console.log('\n' + '\u001b[0;32m Registro realizado com sucesso!\u001b[0m')
       return response.json(txRaw.transactionHash);
     })
     .catch(function(error) {
       console.log("Error: \n" + error);
-      return response.json(error);
+      return response.json('error')
     })
   }
 };
