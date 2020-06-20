@@ -85,7 +85,7 @@ export default function RegisterTransaction() {
       <input 
         defaultValue={tx}
       />
-      <p>Consulte seu comprovante <a href={receipt}>aqui.</a></p>
+      <p>Consulte seu comprovante <a href={receipt} target="_blank">aqui.</a></p>
     </div>
   )
 
@@ -140,17 +140,7 @@ export default function RegisterTransaction() {
           <input 
             defaultValue={hash}
           />
-          <input 
-            placeholder="sua chave pública"
-            value={fromAddress}
-            onChange={e => setFromAddress(e.target.value)}
-          />
-          <input 
-            placeholder="endereço contrato"
-            value={contractAddress}
-            onChange={e => setConctractAddress(e.target.value)}
-          />
-
+          
           <button className="button" type="submit" title={disableBtnRegister.title} disabled={disableBtnRegister.disabled} onClick={handleRegister}>Registrar</button>
 
           {showLoading ? <Loading /> : null || showReceiptWorked ? <ShowResultsWorked /> : null || showReceiptFailed ? <ShowResultsFailed /> : null}

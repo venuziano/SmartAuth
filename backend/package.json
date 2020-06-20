@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec sucrase-node ./src/index.js",
-    "deploy": "aws s3 sync build/ s3://smartauth.com --acl public-read",
+    "server": "babel-node ./src/index.js",
     "build": "./startGeth.sh"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
     "cors": "^2.8.5",
     "crypto-js": "^4.0.0",
     "dotenv": "^8.2.0",
@@ -20,7 +24,7 @@
     "file-system": "^2.2.2",
     "ipfs-mini": "^1.1.5",
     "shelljs": "^0.8.4",
-    "web3": "^1.2.6"
+    "web3": "^1.2.8"
   },
   "devDependencies": {
     "eslint": "^7.1.0",

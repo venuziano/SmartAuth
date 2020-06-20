@@ -1,6 +1,7 @@
 .register-container {
   width: 110%;
-  max-width: 1320px;
+  /* max-width: 1320px; */
+  max-width: 75%;
   height: 100vh;
   margin: 0 auto;
 
