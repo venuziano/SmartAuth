@@ -8,7 +8,7 @@ A solução consiste em extrair a *hash* do documento para posteriormente ser en
 
 ![](smartAuth.png)
 
-### Pré Requisitos
+### Pré-Requisitos
 
 ```
 * Go-ethereum/Geth
