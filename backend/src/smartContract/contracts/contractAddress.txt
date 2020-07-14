@@ -1,0 +1,14 @@
+---------------------___################## RINKEBY ####################### -----------------
+
+contract address deployed -- DocumentHash_v1.json
+0x2A673bf09b8B4685C094c9e047CEBC7797ec93dc
+
+#############################################
+
+contract address deployed -- DocumentHash.json
+0x71326FE44Cc720bcED52D41575ee1687B9c5eE68
+
+---------------------___################## MAINNET ####################### -----------------
+
+contract address deployed -- DocumentHash.json
+0x067a41146aeda69fd9628f93d9e3add14b3fa1aa

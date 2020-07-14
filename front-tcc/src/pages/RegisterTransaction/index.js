@@ -30,6 +30,8 @@ export default function RegisterTransaction() {
     };
 
     setShowLoading(true);
+    setShowReceiptWorked(false);
+    setShowReceiptFailed(false);
 
     try {
       const response = await api.post('/', data)
@@ -60,7 +62,7 @@ export default function RegisterTransaction() {
 
     try {
       setFromAddress('0x181857a9eafdf6412ba38e74e9cabf13d8d8dbdc');
-      setConctractAddress('0x2A673bf09b8B4685C094c9e047CEBC7797ec93dc');
+      setConctractAddress('0x71326FE44Cc720bcED52D41575ee1687B9c5eE68');
       
       const response = await api.post('/uploadFile', formData); 
 

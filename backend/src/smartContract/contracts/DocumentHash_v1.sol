@@ -6,8 +6,8 @@ contract DocumentHash{
     mapping (string => string) hashAlreadyRegistered;
         
     function setDocumentHash(string memory hash) public {
-        require(bytes(hash).length  > 0, "Empty hash!");
-        require(bytes(hashAlreadyRegistered[hash]).length  == 0, "Hash already registered");
+        require(keccak256( abi.encodePacked((""))) != keccak256(abi.encodePacked((hash))), "Empty hash!");
+        require(keccak256( abi.encodePacked((hashAlreadyRegistered[documentHash]))) != keccak256(abi.encodePacked((hash))), "Hash already registered");
         
         documentHash = hash;
         hashAlreadyRegistered[documentHash] = hash;
