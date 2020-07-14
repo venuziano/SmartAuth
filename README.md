@@ -1,6 +1,6 @@
 # Smart Auth
 
-Aplicação desenvolvida a partir da hipotese levantada no meu trabalho de conclusão do curso de Sistemas de Informação. 
+Aplicação desenvolvida a partir da hipótese levantada no meu trabalho de conclusão do curso de Sistemas de Informação. 
 
 A Smart Auth tem como objetivo autenticar qualquer arquivo digital na *blockchain* de testes **RinkeBy** da criptomoeda **Ethereum**.
 
