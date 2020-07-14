@@ -11,9 +11,9 @@ A solução consiste em extrair a *hash* do documento para posteriormente ser en
 ### Pré-Requisitos
 
 ```
-* Go-ethereum/Geth
-* Truffle.js
-* Web3.js
+Go-ethereum/Geth
+Truffle.js
+web3.js
 ```
 ## Construído com
 
@@ -21,6 +21,6 @@ A solução consiste em extrair a *hash* do documento para posteriormente ser en
 * ReactJS
 * Axios
 
-## Autores
+## Autor
 
 Rafael Rodrigues
