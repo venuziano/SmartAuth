@@ -18,7 +18,7 @@ A solução consiste em extrair a *hash* do documento para posteriormente ser en
 ## Construído com
 
 * Node.js
-* React.js
+* React
 * Axios
 
 ## Autores
