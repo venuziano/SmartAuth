@@ -6,6 +6,8 @@ A Smart Auth tem como objetivo autenticar qualquer arquivo digital na *blockchai
 
 A solução consiste em extrair a *hash* do documento para posteriormente ser enviada a *blockchain* através de um *smart contract*.
 
+![](smartAuth.png)
+
 ### Pré Requisitos
 
 ```
@@ -15,9 +17,9 @@ A solução consiste em extrair a *hash* do documento para posteriormente ser en
 ```
 ## Construído com
 
-* node.js
+* Node.js
 * React.js
-* axios
+* Axios
 
 ## Autores
 
