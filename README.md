@@ -1,26 +1,27 @@
 # Smart Auth
 
-Aplicação desenvolvida a partir da hipótese levantada no meu trabalho de conclusão do curso de Sistemas de Informação. 
+App developed by my hypothesis final paper of Information System degree.
 
-A Smart Auth tem como objetivo autenticar qualquer arquivo digital na *blockchain* de testes **RinkeBy** da criptomoeda **Ethereum**.
+The Smart Auth has as goal authenticate any digital file on the **RinkeBy** testing Blockchain of the **Ethereum** cryptocurrency.
 
-A solução consiste em extrair a *hash* do documento para posteriormente ser enviada a *blockchain* através de um *smart contract*.
+The solution consists in extracting the *hash* of the document to later be sent to the Blockchain through a *smart contract*.
 
 ![](smartAuth.png)
 
-### Pré-Requisitos
+### Pre-requirements
 
 ```
 Go-ethereum/Geth
 Truffle.js
 web3.js
 ```
-## Construído com
+
+## Built with
 
 * Node.js
 * ReactJS
 * Axios
 
-## Autor
+## Author
 
 Rafael Rodrigues
