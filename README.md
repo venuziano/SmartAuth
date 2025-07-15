@@ -1,10 +1,8 @@
 # Smart Auth
 
-App developed by my hypothesis final paper of Information System degree.
-
-The Smart Auth has as goal authenticate any digital file on the **RinkeBy** testing Blockchain of the **Ethereum** cryptocurrency.
-
-The solution consists in extracting the *hash* of the document to later be sent to the Blockchain through a *smart contract*.
+This app was developed as part of my final thesis for my Information Systems degree.
+SmartAuth enables authentication of any digital file on Ethereum’s Rinkeby testnet.
+The solution extracts each document’s hash, submits it to the blockchain via a smart contract, and allows verification that the document has not been altered or counterfeited.
 
 ![](smartAuth.png)
 
